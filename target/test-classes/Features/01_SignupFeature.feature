@@ -6,7 +6,7 @@ Feature: Signup Functionality
     When user navigates to login and signup page
 
   Scenario Outline: Validate that user can sign up for a new account
-    Given user enters <firstName> and <emailAddress>
+    Given user enters "<firstName>" and "<emailAddress>"
     And user clicks signup
     And user populates All Information on the next page
     And user clicks create account
@@ -21,7 +21,7 @@ Feature: Signup Functionality
     Then user cannot proceed to registration form
 
   Scenario Outline: Validate that upon attempting to sign up for an account using an email that is already registered, an error message is displayed
-    Given user enters <firstName> and <emailAddress>
+    Given user enters "<firstName>" and "<emailAddress>"
     And user clicks signup
     Then user cannot proceed to registration form
 
