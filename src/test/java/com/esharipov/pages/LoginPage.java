@@ -1,6 +1,7 @@
 package com.esharipov.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
@@ -19,6 +20,7 @@ public class LoginPage {
 	By btnLogin = By.xpath("//button[@data-qa='login-button']");
 	By errorMsgIncorrectCred = By.xpath("//p[text()='Your email or password is incorrect!']");
 	By errorMsgUserExist = By.xpath("//p[text()='Email Address already exist!']");
+	
 	
 	public void populatefNameSignup(String value) {
 		driver.findElement(fNameSignup).sendKeys(value);
@@ -58,11 +60,19 @@ public class LoginPage {
 	}
 	
 	public boolean isErrorMsgIncorrectCredVisible() {
-		return driver.findElement(errorMsgIncorrectCred).isDisplayed();
+		try {
+			return driver.findElement(errorMsgIncorrectCred).isDisplayed();
+		} catch(NoSuchElementException e) {
+			return false;
+		}
 	}
 	
 	public boolean isEmailExistErrorDisplayed() {
-		return driver.findElement(errorMsgUserExist).isDisplayed();
+		try {
+			return driver.findElement(errorMsgUserExist).isDisplayed();
+		} catch(NoSuchElementException e) {
+			return false;
+		}
 	}
 	
 }

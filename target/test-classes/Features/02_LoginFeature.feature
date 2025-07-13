@@ -18,3 +18,9 @@ Feature: Login Functionality
     When user does not enter credentials
     And user clicks on login button
     Then user is unable to login
+
+  Scenario: Validate that user is able to log out from account upon clicking logout button
+    When user enters username "emil.sharipov@hotmail.com" and password "password123"
+    And user clicks on login button
+    And user clicks on logout button
+    Then user is logged out

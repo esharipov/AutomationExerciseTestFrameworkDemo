@@ -43,9 +43,21 @@ public class LoginSteps {
 	public void user_clicks_on_login_button() {
 		loginPage.clickBtnLogin();
 	}
+	@And("user clicks on logout button")
+	public void user_clicks_on_logout_button() {
+		mainPage.clickBtnLogout();
+	}
 	@Then("user is logged in")
 	public void user_is_logged_in() {
 		Assert.assertEquals("URL", "https://www.automationexercise.com/", driver.getCurrentUrl());
+		Assert.assertTrue(mainPage.isBtnLogoutDisplayed());
+		Assert.assertFalse(mainPage.isBtnLoginSignupDisplayed());
+	}
+	@Then("user is logged out")
+	public void user_is_logged_out() {
+		Assert.assertEquals("URL", "https://www.automationexercise.com/login", driver.getCurrentUrl());
+		Assert.assertFalse(mainPage.isBtnLogoutDisplayed());
+		Assert.assertTrue(mainPage.isBtnLoginSignupDisplayed());
 	}
 	
 	@Then("user is unable to login")
